@@ -1,1 +1,173 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BA (Hons) Fashion Program Timeline</title>
+  <!-- Load Mermaid -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.4.0/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      securityLevel: 'loose', // Allows interaction
+      themeVariables: {
+        primaryColor: '#e9ecef',
+        edgeLabelBackground:'#dee2e6',
+        tertiaryColor: '#f8f9fa',
+        secondaryColor: '#adb5bd',
+        noteBkgColor: '#e2e3e5',
+        noteTextColor: '#333333',
+        noteBorderColor: '#ced4da',
+        lineColor: '#6c757d',
+        textColor: '#495057'
+      },
+      gantt: {
+        titleTopMargin: 25,
+        barHeight: 20,
+        barGap: 4,
+        topPadding: 60,
+        sidePadding: 20,
+        numberSectionStyles: 4,
+        axisFormat: '%b %Y',
+        tickInterval: '1month',
+        todayMarker: 'stroke-width:2px,stroke:#ff4d4f,opacity:0.8'
+      }
+    });
+  </script>
+  <!-- Tailwind CSS for styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: #f8f9fa;
+      padding: 0;
+      margin: 0;
+      color: #333;
+    }
+    .ku-content-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .ku-content {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      padding: 30px;
+      margin-bottom: 30px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 3px solid #dee2e6;
+      padding-bottom: 20px;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      padding: 20px;
+      color: #666;
+      font-size: 0.9rem;
+      border-top: 1px solid #e9ecef;
+    }
+  </style>
+</head>
+<body>
+  <div class="ku-content-wrapper">
+    <div class="ku-content">
+      <div class="header">
+        <img src="KSA_secondary_lock-up.png" alt="Kingston School of Art Logo" class="h-12 mb-4 mx-auto block">
+        <h1 class="text-2xl font-bold mb-4">BA (Hons) Fashion Program Feedback and Assessment Timeline</h1>
+        <p>
+          This timeline visualizes your feedback and assessment journey over three years. Note that Year 1 is non-weighted, whereas Year 2 contributes 20% and Year 3 contributes 80% towards your total assessment mark and final degree classification.
+          The timeline displays formative feedback opportunities and summative submission deadlines.<br>
+        </p>
+      </div>
+
+      <!-- Mermaid Diagram Container -->
+      <div class="mermaid">
+        gantt
+  dateFormat  YYYY-MM-DD
+  axisFormat %m-%Y
+  excludes weekends
+
+  %% Reimagined academic timeline
+  title Academic Project Timeline for Design Course
+
+  section Level 4 - (Non-weighted)
+  Induction :done, 2024-09-09, 2024-09-20
+  Project 1 (FN4004 - Design Process 1) : crit, 2024-09-23, 2024-10-21
+  Formative Feedback (FN4004) : milestone, 2024-10-14, 1d
+  Summative Assessment Submission (FN4004) : milestone, 2024-10-21, 1d
+  Project 2 (FN4004) : 2024-10-24, 2024-12-13
+  TB1 Enrichment Week : 2024-10-28, 2024-11-01
+  Formative Feedback (FN4004) : milestone, 2024-12-02, 1d
+  Toile Development (FN4005) : 2025-01-06, 2025-02-14
+  Project 3 (FN4004) : crit, 2025-01-13, 2025-03-17
+  Formative Feedback (FN4005) : milestone, 2025-02-10, 1d
+  TB2 Enrichment Week : 2025-02-17, 2025-02-21
+  Portfolio Development (FN4005) : active, 2025-02-24, 2025-03-17
+  Summative Submission (FN4005) : milestone, 2025-03-17, 1d
+  Historical Themes Research (HA4104) : 2024-09-23, 2024-11-22
+  Essay Planning (HA4104) : 2024-11-25, 2024-12-06
+  Essay Writing Period (HA4104) : active, 2025-01-06, 2025-02-28
+  CHS Submission (HA4104) : milestone, 2025-03-03, 1d
+  Continuous Assessment (FN4002) : done, 2024-09-01, 2025-06-30
+
+  section Level 5 - (Weighted 20%, TB2)
+  Induction : done, 2025-09-09, 2025-09-20
+  Project Kick-Off (FN5001 - Design Process 2) : 2025-09-23, 2025-10-21
+  Formative Feedback (FN5001) : milestone, 2025-10-14, 1d
+  Project Submission (FN5001) : milestone, 2025-10-21, 1d
+  Design Process Tutorials (FN5001) : 2025-10-22, 2025-12-13
+  Major Project Phase 1 (FN5001) : 2025-10-24, 2025-12-13
+  Enrichment Week (FN5001) : 2025-10-28, 2025-11-01
+  Formative Review (FN5001) : milestone, 2025-12-02, 1d
+  Product Development (FN5003) : 2026-01-06, 2026-02-14
+  Icons & Muses (FN5001) : 2026-01-13, 2026-03-17
+  Mid-Point Formative (FN5003) : milestone, 2026-02-10, 1d
+  Enrichment Week (FN5003) : 2026-02-17, 2026-02-21
+  Portfolio Development (FN5003) : 2026-02-24, 2026-03-17
+  Final Project Submission (FN5003) : milestone, 2026-03-17, 1d
+  Historical Themes Research (HA5107) : 2025-09-23, 2025-11-22
+  Essay Planning (HA5107) : 2025-11-25, 2025-12-06
+  Essay Writing Period (HA5107) : active, 2026-01-06, 2026-02-28
+  CHS Submission (HA5107) : milestone, 2026-03-03, 1d
+  Continuous Assessment (FN5002) : done, 2025-09-01, 2026-06-30
+
+  section Level 6 - Year 3 (Weighted 80%, TB3)
+  Induction : done, 2026-09-09, 2026-09-20
+  Project Kick-Off (FN6001 - Design Process 3) : 2026-09-23, 2026-10-21
+  Formative Feedback (FN6001) : milestone, 2026-10-14, 1d
+  Project Submission (FN6001) : milestone, 2026-10-21, 1d
+  Design Process Tutorials (FN6001) : 2026-10-22, 2026-12-13
+  Major Project Phase 1 (FN6001) : 2026-10-24, 2026-12-13
+  Enrichment Week (FN6001) : 2026-10-28, 2026-11-01
+  Formative Review (FN6001) : milestone, 2026-12-02, 1d
+  Product Development (FN6004) : 2027-01-06, 2027-02-14
+  Icons & Muses (FN6004) : 2027-01-13, 2027-03-17
+  Mid-Point Formative (FN6004) : milestone, 2027-02-10, 1d
+  Enrichment Week (FN6004) : 2027-02-17, 2027-02-21
+  Portfolio Development (FN6004) : 2027-02-24, 2027-03-17
+  Final Project Submission (FN6004) : milestone, 2027-03-17, 1d
+  Historical Themes Research (HA6101) : 2026-09-23, 2026-11-22
+  Essay Planning (HA6101) : 2026-11-25, 2026-12-06
+  Essay Writing Period (HA6101) : active, 2027-01-06, 2027-02-28
+  CHS Submission (HA6101) : milestone, 2027-03-03, 1d
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Kingston School of Art - BA (Hons) Fashion Program – Learning Outcomes, Feedback and Assessment KnowledgeBase</p>
+      <p>© 2025 Kingston University</p>
+    </div>
+  </div>
+  <script>
+    // Example callback for interactive events
+    function exampleCallback(taskId) {
+      alert('Clicked on task: ' + taskId);
+    }
+  </script>
+</body>
+</html>
