@@ -21,8 +21,6 @@
         noteBorderColor: '#ced4da',
         lineColor: '#6c757d',
         textColor: '#495057'
-        todayMarker: fill: #FFED00, stroke-width: 2px, stroke: #FFED00, opacity: 0.5,
-        milestone: fill: #f1f1f1, stroke-width: 2px, stroke-dasharray: 2 2,
       },
       gantt: {
         titleTopMargin: 25,
@@ -34,7 +32,16 @@
         axisFormat: '%b %Y',
         tickInterval: '1month',
         todayMarker: fill: #FFED00, stroke-width: 2px, stroke: #FFED00, opacity: 0.5,
-        milestone: fill: #f1f1f1, stroke-width: 2px, stroke-dasharray: 2 2,
+           %%{
+        init: {
+            "theme": "default",
+            "themeVariables": {
+                "ganttTaskFillColor": "#ccc",
+                "ganttTaskTextColor": "#333",
+                "ganttAccentColor": "#666"
+            }
+        }
+    }%%  
       }
     });
   </script>
@@ -94,16 +101,7 @@
   dateFormat  YYYY-MM-DD
   axisFormat %m-%Y
   excludes weekends
-  %%{
-        init: {
-            "theme": "default",
-            "themeVariables": {
-                "ganttTaskFillColor": "#ccc",
-                "ganttTaskTextColor": "#333",
-                "ganttAccentColor": "#666"
-            }
-        }
-    }%%      
+     
 
   section Level 4 - Non-weighted
   Induction : 2024-09-09, 2024-09-20
