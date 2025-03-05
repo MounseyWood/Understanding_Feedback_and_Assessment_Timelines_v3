@@ -94,7 +94,16 @@
   dateFormat  YYYY-MM-DD
   axisFormat %m-%Y
   excludes weekends
-        
+  %%{
+        init: {
+            "theme": "default",
+            "themeVariables": {
+                "ganttTaskFillColor": "#ccc",
+                "ganttTaskTextColor": "#333",
+                "ganttAccentColor": "#666"
+            }
+        }
+    }%%      
 
   section Level 4 - Non-weighted
   Induction : 2024-09-09, 2024-09-20
