@@ -234,6 +234,7 @@
       overflow-x: auto;
     }
     
+    /* Teaching blocks styling */
     .teaching-blocks {
       position: relative;
       height: 2rem;
@@ -243,7 +244,7 @@
     }
     
     .block-label {
-      height: 1.5rem;
+      height: 2rem; /* Match the height of the teaching blocks container */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -252,6 +253,14 @@
       font-size: 0.875rem;
       text-align: center;
       padding: 0 4px;
+    }
+    
+    /* Break spacer styling */
+    .break-spacer {
+      height: 2rem; /* Match the height of the teaching blocks container */
+      background-color: #c2e7f7; /* Light blue for breaks */
+      opacity: 0.7;
+      border: 1px solid #dee2e6;
     }
     
     /* Adjust width of teaching blocks to match actual weeks */
@@ -304,11 +313,12 @@
       z-index: 0;
     }
     
+    /* Style for vertical columns (breaks) on the main chart */
     .vertical-column {
       position: absolute;
       top: 0;
       height: 100%;
-      background-color: #c2e7f7; /* Updated to light blue that complements #0092D4 */
+      background-color: #c2e7f7; /* Same as break-spacer */
       opacity: 0.7;
       z-index: 0;
     }
@@ -997,34 +1007,50 @@
         // Clear existing content
         teachingBlocks.innerHTML = '';
         
+        // Get break positions to align with the vertical columns
+        const breaks = timelineData[activeYear].breaks;
+        
         // Create teaching blocks with appropriate spacing
         const block1 = document.createElement('div');
         block1.className = 'block-label';
         block1.textContent = 'Teaching Block 1';
-        block1.style.flex = '13'; // Weeks 0-12
+        // Set width based on weeks 0 to winter break
+        const tb1Width = (breaks.find(b => b.name.includes('Winter')).start / totalWeeks) * 100;
+        block1.style.width = `${tb1Width}%`;
         
+        // Winter break spacer
+        const winterBreak = breaks.find(b => b.name.includes('Winter'));
+        const winterBreakSpacer = document.createElement('div');
+        const winterBreakWidth = (winterBreak.duration / totalWeeks) * 100;
+        winterBreakSpacer.style.width = `${winterBreakWidth}%`;
+        winterBreakSpacer.className = 'break-spacer';
+        winterBreakSpacer.title = 'Winter Break';
+        
+        // Teaching Block 2
         const block2 = document.createElement('div');
         block2.className = 'block-label';
         block2.textContent = 'Teaching Block 2';
-        block2.style.flex = '9'; // Weeks 16-24 (accounting for 3-week Winter Break)
+        // From end of winter break to spring break
+        const tb2Start = winterBreak.start + winterBreak.duration;
+        const springBreak = breaks.find(b => b.name.includes('Spring'));
+        const tb2Width = ((springBreak.start - tb2Start) / totalWeeks) * 100;
+        block2.style.width = `${tb2Width}%`;
         
+        // Spring break spacer
+        const springBreakSpacer = document.createElement('div');
+        const springBreakWidth = (springBreak.duration / totalWeeks) * 100;
+        springBreakSpacer.style.width = `${springBreakWidth}%`;
+        springBreakSpacer.className = 'break-spacer';
+        springBreakSpacer.title = 'Spring Break';
+        
+        // Teaching Block 3
         const block3 = document.createElement('div');
         block3.className = 'block-label';
         block3.textContent = 'Teaching Block 3';
-        block3.style.flex = '8'; // 8 weeks after Spring Break
-        
-        // Add spacers for the breaks
-        const winterBreakSpacer = document.createElement('div');
-        winterBreakSpacer.style.flex = '3'; // 3-week Winter Break
-        winterBreakSpacer.style.backgroundColor = '#c2e7f7';
-        winterBreakSpacer.style.opacity = '0.7';
-        winterBreakSpacer.style.border = '1px solid #dee2e6';
-        
-        const springBreakSpacer = document.createElement('div');
-        springBreakSpacer.style.flex = '3'; // 3-week Spring Break
-        springBreakSpacer.style.backgroundColor = '#c2e7f7';
-        springBreakSpacer.style.opacity = '0.7';
-        springBreakSpacer.style.border = '1px solid #dee2e6';
+        // From end of spring break to end of timeline
+        const tb3Start = springBreak.start + springBreak.duration;
+        const tb3Width = ((totalWeeks - tb3Start) / totalWeeks) * 100;
+        block3.style.width = `${tb3Width}%`;
         
         // Append blocks and spacers in the correct order
         teachingBlocks.appendChild(block1);
