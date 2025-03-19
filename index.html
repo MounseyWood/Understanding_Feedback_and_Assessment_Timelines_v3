@@ -16,21 +16,21 @@
       color: #333;
       margin: 0;
       padding: 0;
-      background-color: #fff;
+      background-color: #fff; /* Changed from #f8f8f8 to white */
     }
     
     .container {
-      max-width: 100%;
+      max-width: 100%; /* Changed from 1200px to 100% to fill the screen */
       margin: 0;
-      padding: 0;
+      padding: 0; /* Removed padding to fill the screen */
     }
     
     .timeline-container {
       background-color: white;
-      border-radius: 0;
-      box-shadow: none;
+      border-radius: 0; /* Removed border radius */
+      box-shadow: none; /* Removed box shadow */
       padding: 30px;
-      margin-bottom: 0;
+      margin-bottom: 0; /* Removed bottom margin */
     }
     
     h1 {
@@ -79,7 +79,7 @@
     .year-tab.active {
       background-color: #FFED00;
       border-color: #f5f5f5;
-      color: #000;
+      color: #000; /* Ensuring text is black in active tab */
     }
     
     /* Year sections */
@@ -208,8 +208,8 @@
     .resource-link {
       display: inline-block;
       margin-top: 1rem;
-      background-color: #FFED00;
-      color: #000;
+      background-color: #FFED00; /* Changed from blue to yellow */
+      color: #000; /* Changed from white to black */
       padding: 0.5rem 1rem;
       border-radius: 0.25rem;
       text-decoration: none;
@@ -217,7 +217,7 @@
     }
     
     .resource-link:hover {
-      background-color: #e6d500;
+      background-color: #e6d500; /* Darker yellow on hover */
     }
     
     .expectations-text {
@@ -235,7 +235,7 @@
     .timeline-visualization {
       border: 1px solid #dee2e6;
       border-radius: 0.5rem;
-      padding: 0.5rem;
+      padding: 0.5rem; /* Reduced from 0.75rem to reduce horizontal spacing */
       background-color: #f8f9fa;
       position: relative;
       overflow-x: auto;
@@ -251,7 +251,7 @@
     }
     
     .block-label {
-      height: 2rem;
+      height: 2rem; /* Match the height of the teaching blocks container */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -264,8 +264,8 @@
     
     /* Break spacer styling */
     .break-spacer {
-      height: 2rem;
-      background-color: #c2e7f7;
+      height: 2rem; /* Match the height of the teaching blocks container */
+      background-color: #c2e7f7; /* Light blue for breaks */
       opacity: 0.7;
       border: 1px solid #dee2e6;
     }
@@ -273,16 +273,16 @@
     /* Enrichment Week spacer styling */
     .enrichment-spacer {
       height: 2rem;
-      background-color: #e9ecef;
+      background-color: #e9ecef; /* Light gray for enrichment weeks */
       opacity: 0.6;
       border: 1px solid #dee2e6;
     }
     
     .week-markers {
       position: relative;
-      height: 1.5rem;
+      height: 2rem;
       margin-bottom: 1.5rem;
-      border-bottom: 1px solid #adb5bd;
+      border-bottom: 1px solid #adb5bd; /* Darker to be more visible */
     }
     
     .week-marker {
@@ -291,23 +291,14 @@
     }
     
     .week-marker-line {
-      position: absolute;
-      top: -5px;
-      height: calc(100% + 10px);
-      border-left: 1px solid #adb5bd;
-      left: 50%;
-      transform: translateX(-50%);
+      height: 100%;
+      border-left: 1px solid #adb5bd; /* Darker to be more visible */
     }
     
     .week-marker-label {
       font-size: 0.75rem;
-      color: #555;
+      color: #555; /* Darker to be more visible */
       margin-top: 0.25rem;
-      position: absolute;
-      text-align: center;
-      transform: translateX(-50%);
-      width: auto;
-      white-space: nowrap;
     }
     
     .timeline-content {
@@ -335,12 +326,12 @@
     
     /* Different column types */
     .break-column {
-      background-color: #c2e7f7;
+      background-color: #c2e7f7; /* Same as break-spacer */
       opacity: 0.7;
     }
     
     .enrichment-column {
-      background-color: #e9ecef;
+      background-color: #e9ecef; /* Light gray for enrichment weeks */
       opacity: 0.6;
     }
     
@@ -351,7 +342,7 @@
     
     .timeline-row {
       position: relative;
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.75rem; /* Enough space for text below */
       min-height: 1.5rem;
     }
     
@@ -369,13 +360,14 @@
     }
     
     .timeline-item.project {
-      background-color: transparent;
-      border-top: 6px solid #adb5bd;
+      background-color: transparent; /* Remove background */
+      border-top: 6px solid #adb5bd; /* Horizontal line of 6pt thickness */
       height: 6px;
       border-left: none;
       border-right: none;
       border-bottom: none;
       border-radius: 0;
+      /* Reduced horizontal spacing by making the lines slightly thinner */
       margin-left: 2px;
       margin-right: 2px;
     }
@@ -420,26 +412,26 @@
     /* UPDATED: Modified to place label BELOW the circumference of the milestone */
     .milestone-label {
       position: absolute;
-      top: 24px;
+      top: 24px; /* Positioned below the 1.5rem (24px) circle */
       font-size: 0.75rem;
       white-space: nowrap;
       text-align: left;
       color: #333;
-      left: 0;
+      left: 0; /* Align to left of the icon */
     }
     
     /* Special class for final summative submissions */
     .milestone-label.final-submission {
       text-align: right;
-      right: 20px;
+      right: 20px; /* Increased so text is visible on screen */
       left: auto;
-      width: 180px;
+      width: 180px; /* Set a fixed width to ensure text doesn't overflow */
     }
     
     /* Project label - appears below project lines */
     .project-label {
       position: absolute;
-      top: 4px;
+      top: 4px; /* Just 2px below the line + dot */
       left: 0;
       font-size: 0.75rem;
       white-space: nowrap;
@@ -490,7 +482,7 @@
     .back-button {
       padding: 0.75rem 1.5rem;
       background-color: #FFED00;
-      color: #000;
+      color: #000; /* Changed to black */
       border: none;
       border-radius: 0.25rem;
       font-weight: bold;
@@ -507,7 +499,7 @@
     .support-button {
       padding: 0.75rem 1.5rem;
       background-color: #FFED00;
-      color: #000;
+      color: #000; /* Changed to black */
       border: none;
       border-radius: 0.25rem;
       font-weight: bold;
@@ -532,7 +524,7 @@
     /* Mobile responsiveness */
     @media (max-width: 768px) {
       .container {
-        padding: 0;
+        padding: 0; /* Removed padding for mobile */
       }
       
       .timeline-container {
@@ -562,21 +554,21 @@
       }
       
       .timeline-row {
-        margin-bottom: 2.5rem;
+        margin-bottom: 2.5rem; /* More space for mobile */
       }
       
       .milestone-label {
-        top: 28px;
+        top: 28px; /* A bit more space on mobile */
         font-size: 0.7rem;
         max-width: 90%;
-        white-space: normal;
+        white-space: normal; /* Allow wrapping on mobile */
       }
       
       .project-label {
-        top: 8px;
+        top: 8px; /* A bit more space on mobile */
         font-size: 0.7rem;
         max-width: 90%;
-        white-space: normal;
+        white-space: normal; /* Allow wrapping on mobile */
       }
       
       .button-container {
@@ -708,7 +700,7 @@
         year1: {
           title: "Year 1: Non-weighted",
           description: "Allowing for experimentation and exploration without high stakes.",
-          weeks: 41,
+          weeks: 41, // Updated to 41 total weeks to accommodate full academic year
           items: [
             { id: 'induction', name: 'Induction', start: 0, duration: 1, type: 'project' },
             { id: 'project1', name: 'Project One (FN4004)', start: 1, duration: 5, type: 'project' },
@@ -728,37 +720,37 @@
             { id: 'formative3', name: 'Formative Feedback (FN4004)', start: 20, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Development feedback for your project to help refine your direction.<br><br><span class='expectations-text'>Expectations:</span> Bring your design development work and be prepared to discuss your progress and challenges.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'enrichment2', name: 'Enrichment Week', start: 21, duration: 1, type: 'project' },
-            { id: 'project4', name: 'Project Four (FN4004)', start: 22, duration: 5, type: 'project' },
+            { id: 'enrichment2', name: 'Enrichment Week', start: 21, duration: 1, type: 'project' }, // Updated to week 21 (TW18)
+            { id: 'project4', name: 'Project Four (FN4004)', start: 22, duration: 5, type: 'project' }, // Updated start to after EW2
             { id: 'formative4', name: 'Formative Feedback (FN4004)', start: 26, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Technical feedback on your toile development and construction techniques.<br><br><span class='expectations-text'>Expectations:</span> Present your toile and technical samples. Be prepared to discuss construction decisions and technical challenges.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
             { id: 'summative2', name: 'Summative Assessment Submission(FN4004)', start: 27, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Final assessment of your technical development work.<br><br><span class='expectations-text'>Expectations:</span> Submit all required technical samples, toiles, and documentation as specified in the brief.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'springBreak', name: 'Spring Break', start: 28, duration: 3, type: 'project' },
-            { id: 'portfolio', name: 'Portfolio Development (FN4005)', start: 31, duration: 9, type: 'project' },
+            { id: 'springBreak', name: 'Spring Break', start: 28, duration: 3, type: 'project' }, // Updated position
+            { id: 'portfolio', name: 'Portfolio Development (FN4005)', start: 31, duration: 9, type: 'project' }, // Updated position
             { id: 'historical', name: 'Historical Themes Research (HA4104)', start: 1, duration: 12, type: 'project' },
             { id: 'essayPlanning', name: 'Essay Planning (HA4104)', start: 16, duration: 6, type: 'project' },
             { id: 'essayWriting', name: 'Essay Writing Period (HA4104)', start: 22, duration: 6, type: 'project' },
-            { id: 'finalSubmission', name: 'Final Submissions', start: 40, duration: 0, type: 'summative', 
+            { id: 'finalSubmission', name: 'Final Submissions', start: 40, duration: 0, type: 'summative', // Updated position
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Final portfolio assessment including all year's work.<br><br><span class='expectations-text'>Expectations:</span> Submit a comprehensive portfolio demonstrating your technical, creative, and academic development throughout the year.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'chsSubmission', name: 'CHS Submission (HA4104)', start: 31, duration: 0, type: 'summative', 
+            { id: 'chsSubmission', name: 'CHS Submission (HA4104)', start: 31, duration: 0, type: 'summative', // Updated position
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
-              details: "Final submission of your written Cultural & Historical Studies essay.<br><br><span class='expectations-text'>Expectations:</span> Submit a properly formatted academic essay addressing the assigned topic. Ensure proper citations, bibliography, and adherence to word count.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" }
+              details: "Final submission of your written Cultural & Historical Studies essay.<br><br><span class='expectations-text'>Expectations:</span> Submit a properly formatted academic essay addressing the assigned topic. Ensure proper citations, bibliography, and adherence to word count.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
           ],
           breaks: [
             { name: 'Enrichment Week (TB1)', start: 6, duration: 1 },
             { name: 'Winter Break', start: 13, duration: 3 },
             { name: 'Enrichment Week (TB2)', start: 18, duration: 1 },
-            { name: 'Spring Break', start: 28, duration: 3 }
+            { name: 'Spring Break', start: 28, duration: 3 } // Updated position
           ]
         },
         year2: {
           title: "Year 2: 20% weighted",
           description: "Contributes 20% to your final mark, reflecting the adoption of Professional Practice.",
-          weeks: 41,
+          weeks: 41, // Updated to 41 weeks to match Year 1
           items: [
             { id: 'induction2', name: 'Induction', start: 0, duration: 1, type: 'project' },
             { id: 'project1_y2', name: 'Design Process - Project One', start: 1, duration: 5, type: 'project' },
@@ -796,7 +788,7 @@
               details: "Final submission of your Year 2 Cultural & Historical Studies essay.<br><br><span class='expectations-text'>Expectations:</span> Submit a well-researched academic essay with proper citations and bibliography. Your writing should demonstrate increased analytical sophistication from Year 1.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
             { id: 'finalSubmission_y2_end', name: 'Final Submissions', start: 40, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
-              details: "Final portfolio assessment for Year 2.<br><br><span class='expectations-text'>Expectations:</span> Submit a comprehensive portfolio demonstrating your technical, creative, and professional development throughout the year.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" }
+              details: "Final portfolio assessment for Year 2.<br><br><span class='expectations-text'>Expectations:</span> Submit a comprehensive portfolio demonstrating your technical, creative, and professional development throughout the year.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
           ],
           breaks: [
             { name: 'Enrichment Week (TB1)', start: 6, duration: 1 },
@@ -808,7 +800,7 @@
         year3: {
           title: "Year 3: 80% weighted",
           description: "Carries the majority of the weight at 80%, emphasising the importance of your final year work.",
-          weeks: 41,
+          weeks: 41, // Updated to 41 weeks to match Year 1
           items: [
             { id: 'induction3', name: 'Induction', start: 0, duration: 1, type: 'project' },
             { id: 'project1_y3', name: 'Pre-Collection (FN6001)', start: 1, duration: 5, type: 'project' },
@@ -847,7 +839,7 @@
               details: "Final exhibition of your work and degree classification.<br><br><span class='expectations-text'>Expectations:</span> Present your complete collection and portfolio at professional industry standards. Your presentation should demonstrate your readiness to enter the fashion industry.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
             { id: 'chsSubmission_y3', name: 'Dissertation Submission (HA6101)', start: 31, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
-              details: "Final submission of your Year 3 Cultural & Historical Studies dissertation.<br><br><span class='expectations-text'>Expectations:</span> Submit a dissertation that demonstrates advanced research skills, critical analysis, and academic writing at degree level. Your work should make an original contribution to the field.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" }
+              details: "Final submission of your Year 3 Cultural & Historical Studies dissertation.<br><br><span class='expectations-text'>Expectations:</span> Submit a dissertation that demonstrates advanced research skills, critical analysis, and academic writing at degree level. Your work should make an original contribution to the field.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
           ],
           breaks: [
             { name: 'Enrichment Week (TB1)', start: 6, duration: 1 },
@@ -968,87 +960,60 @@
         }
         
         // Display week markers at key points and teaching blocks
-        // Regular markers
-        const regularMarkerWeeks = [0, 1, 6, 13, 16, 21, 28, 31];
+        // Include TW18 (week 21) marker
+        const markerWeeks = [0, 1, 6, 12, 13, 16, 21, 27, 28, 31, 40];
         
-        // Create regular markers
-        for (let i of regularMarkerWeeks) {
+        for (let i of markerWeeks) {
           const position = (i / totalWeeks) * 100;
           const marker = document.createElement('div');
           marker.className = 'week-marker';
           marker.style.left = `${position}%`;
           
-          const line = document.createElement('div');
-          line.className = 'week-marker-line';
-          
-          const label = document.createElement('div');
-          label.className = 'week-marker-label';
-          label.textContent = teachingWeeks[i];
-          
-          marker.appendChild(line);
-          marker.appendChild(label);
+          // Special handling for TW12, TW24 and TW34 - align to the end of their teaching blocks
+          if (i === 12) {
+            // TW12 should right-align exactly with Winter Break start line
+            const label = document.createElement('div');
+            label.className = 'week-marker-label';
+            label.textContent = teachingWeeks[i];
+            label.style.position = 'absolute';
+            label.style.right = '-6px'; // Adjust to align with the divider based on screenshot
+            label.style.textAlign = 'right';
+            
+            marker.appendChild(label);
+          } else if (i === 27) {
+            // TW24 should right-align exactly with Spring Break start line
+            const label = document.createElement('div');
+            label.className = 'week-marker-label';
+            label.textContent = teachingWeeks[i];
+            label.style.position = 'absolute';
+            label.style.right = '-6px'; // Adjust to align with the divider based on screenshot
+            label.style.textAlign = 'right';
+            
+            marker.appendChild(label);
+          } else if (i === 40) {
+            // TW34 should right-align with the end of TB3
+            const label = document.createElement('div');
+            label.className = 'week-marker-label';
+            label.textContent = "TW34";
+            label.style.position = 'absolute';
+            label.style.right = '-6px'; // Adjust to align with the end divider based on screenshot
+            label.style.textAlign = 'right';
+            
+            marker.appendChild(label);
+          } else {
+            const line = document.createElement('div');
+            line.className = 'week-marker-line';
+            
+            const label = document.createElement('div');
+            label.className = 'week-marker-label';
+            label.textContent = teachingWeeks[i];
+            
+            marker.appendChild(line);
+            marker.appendChild(label);
+          }
           
           weekMarkers.appendChild(marker);
         }
-        
-        // Special markers that need to precisely align with block boundaries
-        
-        // TW12 (end of TB1)
-        const tw12Position = (12 / totalWeeks) * 100;
-        const tw12Marker = document.createElement('div');
-        tw12Marker.className = 'week-marker';
-        tw12Marker.style.left = `${tw12Position}%`;
-        
-        const tw12Line = document.createElement('div');
-        tw12Line.className = 'week-marker-line';
-        
-        const tw12Label = document.createElement('div');
-        tw12Label.className = 'week-marker-label';
-        tw12Label.textContent = "TW12";
-        tw12Label.style.left = "100%"; // Position at right edge of marker
-        tw12Label.style.transform = "none"; // Override default centering
-        
-        tw12Marker.appendChild(tw12Line);
-        tw12Marker.appendChild(tw12Label);
-        weekMarkers.appendChild(tw12Marker);
-        
-        // TW24 (end of TB2)
-        const tw24Position = (27 / totalWeeks) * 100;
-        const tw24Marker = document.createElement('div');
-        tw24Marker.className = 'week-marker';
-        tw24Marker.style.left = `${tw24Position}%`;
-        
-        const tw24Line = document.createElement('div');
-        tw24Line.className = 'week-marker-line';
-        
-        const tw24Label = document.createElement('div');
-        tw24Label.className = 'week-marker-label';
-        tw24Label.textContent = "TW24";
-        tw24Label.style.left = "100%"; // Position at right edge of marker
-        tw24Label.style.transform = "none"; // Override default centering
-        
-        tw24Marker.appendChild(tw24Line);
-        tw24Marker.appendChild(tw24Label);
-        weekMarkers.appendChild(tw24Marker);
-        
-        // TW34 (end of TB3)
-        const tw34Position = (40 / totalWeeks) * 100;
-        const tw34Marker = document.createElement('div');
-        tw34Marker.className = 'week-marker';
-        tw34Marker.style.left = `${tw34Position}%`;
-        
-        const tw34Line = document.createElement('div');
-        tw34Line.className = 'week-marker-line';
-        
-        const tw34Label = document.createElement('div');
-        tw34Label.className = 'week-marker-label';
-        tw34Label.textContent = "TW34";
-        tw34Label.style.left = "100%"; // Position at right edge of marker
-        tw34Label.style.transform = "none"; // Override default centering
-        
-        tw34Marker.appendChild(tw34Line);
-        tw34Marker.appendChild(tw34Label);
-        weekMarkers.appendChild(tw34Marker);
       }
       
       // Render vertical columns for breaks and enrichment weeks with distinction
@@ -1058,7 +1023,7 @@
         const breaks = [
           { name: 'Enrichment Week (TB1)', start: 6, duration: 1 },
           { name: 'Winter Break', start: 13, duration: 3 },
-          { name: 'Enrichment Week (TB2)', start: 21, duration: 1 },
+          { name: 'Enrichment Week (TB2)', start: 21, duration: 1 }, // Updated to week 21 which corresponds to TW18
           { name: 'Spring Break', start: 28, duration: 3 }
         ];
         
@@ -1129,15 +1094,15 @@
                 showModal(item);
               });
               
+              // Add label precisely aligned with the milestone
+              const label = document.createElement('div');
+              
               // Check if this is a final submission
               const isFinalSubmission = 
                 (item.id === 'finalSubmission' || 
                  item.id === 'finalSubmission_y2_end' || 
                  item.id === 'finalShow' ||
                  item.id === 'finalYearSubmission');
-              
-              // Add label precisely aligned with the milestone
-              const label = document.createElement('div');
               
               if (isFinalSubmission) {
                 // For final submissions, position text properly
