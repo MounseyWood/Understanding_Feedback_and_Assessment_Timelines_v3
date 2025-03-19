@@ -280,9 +280,9 @@
     
     .week-markers {
       position: relative;
-      height: 2rem;
+      height: 1.5rem; /* Reduced from 2rem to save vertical space */
       margin-bottom: 1.5rem;
-      border-bottom: 1px solid #adb5bd; /* Darker to be more visible */
+      border-bottom: 1px solid #adb5bd; /* Horizontal line */
     }
     
     .week-marker {
@@ -291,14 +291,23 @@
     }
     
     .week-marker-line {
-      height: 100%;
-      border-left: 1px solid #adb5bd; /* Darker to be more visible */
+      position: absolute;
+      top: -5px; /* Extend above the horizontal line */
+      height: calc(100% + 10px); /* Extend below the horizontal line */
+      border-left: 1px solid #adb5bd;
+      left: 50%; /* Center the line */
+      transform: translateX(-50%); /* Ensure perfect centering */
     }
     
     .week-marker-label {
       font-size: 0.75rem;
-      color: #555; /* Darker to be more visible */
+      color: #555;
       margin-top: 0.25rem;
+      position: absolute;
+      text-align: center;
+      transform: translateX(-50%); /* Center the text under the line */
+      width: auto;
+      white-space: nowrap;
     }
     
     .timeline-content {
@@ -960,60 +969,88 @@
         }
         
         // Display week markers at key points and teaching blocks
-        // Include TW18 (week 21) marker
-        const markerWeeks = [0, 1, 6, 12, 13, 16, 21, 27, 28, 31, 40];
+        // Regular markers
+        const regularMarkerWeeks = [0, 1, 6, 13, 16, 21, 28, 31];
         
-        for (let i of markerWeeks) {
+        // Create regular markers
+        for (let i of regularMarkerWeeks) {
           const position = (i / totalWeeks) * 100;
           const marker = document.createElement('div');
           marker.className = 'week-marker';
           marker.style.left = `${position}%`;
           
-          // Special handling for TW12, TW24 and TW34 - align to the end of their teaching blocks
-          if (i === 12) {
-            // TW12 should right-align exactly with Winter Break start line
-            const label = document.createElement('div');
-            label.className = 'week-marker-label';
-            label.textContent = teachingWeeks[i];
-            label.style.position = 'absolute';
-            label.style.right = '-6px'; // Adjust to align with the divider based on screenshot
-            label.style.textAlign = 'right';
-            
-            marker.appendChild(label);
-          } else if (i === 27) {
-            // TW24 should right-align exactly with Spring Break start line
-            const label = document.createElement('div');
-            label.className = 'week-marker-label';
-            label.textContent = teachingWeeks[i];
-            label.style.position = 'absolute';
-            label.style.right = '-6px'; // Adjust to align with the divider based on screenshot
-            label.style.textAlign = 'right';
-            
-            marker.appendChild(label);
-          } else if (i === 40) {
-            // TW34 should right-align with the end of TB3
-            const label = document.createElement('div');
-            label.className = 'week-marker-label';
-            label.textContent = "TW34";
-            label.style.position = 'absolute';
-            label.style.right = '-6px'; // Adjust to align with the end divider based on screenshot
-            label.style.textAlign = 'right';
-            
-            marker.appendChild(label);
-          } else {
-            const line = document.createElement('div');
-            line.className = 'week-marker-line';
-            
-            const label = document.createElement('div');
-            label.className = 'week-marker-label';
-            label.textContent = teachingWeeks[i];
-            
-            marker.appendChild(line);
-            marker.appendChild(label);
-          }
+          const line = document.createElement('div');
+          line.className = 'week-marker-line';
+          
+          const label = document.createElement('div');
+          label.className = 'week-marker-label';
+          label.textContent = teachingWeeks[i];
+          
+          marker.appendChild(line);
+          marker.appendChild(label);
           
           weekMarkers.appendChild(marker);
         }
+        
+        // Special markers that need to precisely align with block boundaries
+        
+        // TW12 (end of TB1)
+        const tw12Position = (12 / totalWeeks) * 100;
+        const tw12Marker = document.createElement('div');
+        tw12Marker.className = 'week-marker';
+        tw12Marker.style.left = `${tw12Position}%`;
+        
+        const tw12Line = document.createElement('div');
+        tw12Line.className = 'week-marker-line';
+        
+        const tw12Label = document.createElement('div');
+        tw12Label.className = 'week-marker-label';
+        tw12Label.textContent = "TW12";
+        tw12Label.style.left = "100%"; // Position at right edge of marker
+        tw12Label.style.transform = "none"; // Override default centering
+        
+        tw12Marker.appendChild(tw12Line);
+        tw12Marker.appendChild(tw12Label);
+        weekMarkers.appendChild(tw12Marker);
+        
+        // TW24 (end of TB2)
+        const tw24Position = (27 / totalWeeks) * 100;
+        const tw24Marker = document.createElement('div');
+        tw24Marker.className = 'week-marker';
+        tw24Marker.style.left = `${tw24Position}%`;
+        
+        const tw24Line = document.createElement('div');
+        tw24Line.className = 'week-marker-line';
+        
+        const tw24Label = document.createElement('div');
+        tw24Label.className = 'week-marker-label';
+        tw24Label.textContent = "TW24";
+        tw24Label.style.left = "100%"; // Position at right edge of marker
+        tw24Label.style.transform = "none"; // Override default centering
+        
+        tw24Marker.appendChild(tw24Line);
+        tw24Marker.appendChild(tw24Label);
+        weekMarkers.appendChild(tw24Marker);
+        
+        // TW34 (end of TB3)
+        const tw34Position = (40 / totalWeeks) * 100;
+        const tw34Marker = document.createElement('div');
+        tw34Marker.className = 'week-marker';
+        tw34Marker.style.left = `${tw34Position}%`;
+        
+        const tw34Line = document.createElement('div');
+        tw34Line.className = 'week-marker-line';
+        
+        const tw34Label = document.createElement('div');
+        tw34Label.className = 'week-marker-label';
+        tw34Label.textContent = "TW34";
+        tw34Label.style.left = "100%"; // Position at right edge of marker
+        tw34Label.style.transform = "none"; // Override default centering
+        
+        tw34Marker.appendChild(tw34Line);
+        tw34Marker.appendChild(tw34Label);
+        weekMarkers.appendChild(tw34Marker);
+      }
       }
       
       // Render vertical columns for breaks and enrichment weeks with distinction
