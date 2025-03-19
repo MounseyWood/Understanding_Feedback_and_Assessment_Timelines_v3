@@ -16,21 +16,21 @@
       color: #333;
       margin: 0;
       padding: 0;
-      background-color: white; /* Changed from #f8f8f8 to white */
+      background-color: #fff; /* Changed from #f8f8f8 to white */
     }
     
     .container {
-      width: 100%; /* Changed from max-width: 1200px */
-      margin: 0; /* Changed from margin: 0 auto */
-      padding: 0; /* Changed from padding: 20px */
+      max-width: 100%; /* Changed from 1200px to 100% to fill the screen */
+      margin: 0;
+      padding: 0; /* Removed padding to fill the screen */
     }
     
     .timeline-container {
       background-color: white;
-      border-radius: 0; /* Removed border-radius */
-      box-shadow: none; /* Removed box-shadow */
-      padding: 15px;
-      margin: 0; /* Changed from margin-bottom: 30px */
+      border-radius: 0; /* Removed border radius */
+      box-shadow: none; /* Removed box shadow */
+      padding: 30px;
+      margin-bottom: 0; /* Removed bottom margin */
     }
     
     h1 {
@@ -79,7 +79,7 @@
     .year-tab.active {
       background-color: #FFED00;
       border-color: #f5f5f5;
-      color: black; /* Ensuring the text is black */
+      color: #000; /* Ensuring text is black in active tab */
     }
     
     /* Year sections */
@@ -143,9 +143,10 @@
       border-color: #0092D4;
     }
     
+    /* Enrichment week color */
     .enrichment-color {
-      background-color: #f5f5f5;
-      border-color: #aaaaaa;
+      background-color: #e9ecef;
+      border-color: #ced4da;
     }
     
     /* Modal popup */
@@ -207,8 +208,8 @@
     .resource-link {
       display: inline-block;
       margin-top: 1rem;
-      background-color: #2563eb;
-      color: white;
+      background-color: #FFED00; /* Changed from blue to yellow */
+      color: #000; /* Changed from white to black */
       padding: 0.5rem 1rem;
       border-radius: 0.25rem;
       text-decoration: none;
@@ -216,7 +217,7 @@
     }
     
     .resource-link:hover {
-      background-color: #1d4ed8;
+      background-color: #e6d500; /* Darker yellow on hover */
     }
     
     .expectations-text {
@@ -234,7 +235,7 @@
     .timeline-visualization {
       border: 1px solid #dee2e6;
       border-radius: 0.5rem;
-      padding: 0.75rem; /* Reduced padding to reduce horizontal spacing */
+      padding: 0.5rem; /* Reduced from 0.75rem to reduce horizontal spacing */
       background-color: #f8f9fa;
       position: relative;
       overflow-x: auto;
@@ -269,17 +270,12 @@
       border: 1px solid #dee2e6;
     }
     
-    /* Adjust width of teaching blocks to match actual weeks */
-    .block-label:nth-child(1) {
-      flex: 12; /* Teaching Block 1: Weeks 0-12 (ends at Winter Vacation) */
-    }
-    
-    .block-label:nth-child(2) {
-      flex: 9; /* Teaching Block 2: Weeks 16-24 (after Winter Vacation, ends at Spring Break) */
-    }
-    
-    .block-label:nth-child(3) {
-      flex: 8; /* Teaching Block 3: Weeks 28-35 (after Spring Break, 8 weeks) */
+    /* Enrichment Week spacer styling */
+    .enrichment-spacer {
+      height: 2rem;
+      background-color: #e9ecef; /* Light gray for enrichment weeks */
+      opacity: 0.6;
+      border: 1px solid #dee2e6;
     }
     
     .week-markers {
@@ -324,9 +320,19 @@
       position: absolute;
       top: 0;
       height: 100%;
-      background-color: #c2e7f7; /* Same as break-spacer */
       opacity: 0.7;
       z-index: 0;
+    }
+    
+    /* Different column types */
+    .break-column {
+      background-color: #c2e7f7; /* Same as break-spacer */
+      opacity: 0.7;
+    }
+    
+    .enrichment-column {
+      background-color: #e9ecef; /* Light gray for enrichment weeks */
+      opacity: 0.6;
     }
     
     .timeline-items {
@@ -468,7 +474,7 @@
     .back-button {
       padding: 0.75rem 1.5rem;
       background-color: #FFED00;
-      color: #000; /* Ensuring text is black */
+      color: #000; /* Changed to black */
       border: none;
       border-radius: 0.25rem;
       font-weight: bold;
@@ -485,7 +491,7 @@
     .support-button {
       padding: 0.75rem 1.5rem;
       background-color: #FFED00;
-      color: #000; /* Ensuring text is black */
+      color: #000; /* Changed to black */
       border: none;
       border-radius: 0.25rem;
       font-weight: bold;
@@ -510,11 +516,11 @@
     /* Mobile responsiveness */
     @media (max-width: 768px) {
       .container {
-        padding: 0; /* Changed from padding: 10px */
+        padding: 0; /* Removed padding for mobile */
       }
       
       .timeline-container {
-        padding: 10px; /* Changed from padding: 15px */
+        padding: 15px;
       }
       
       .year-tabs {
@@ -601,7 +607,7 @@
         <p>This year carries the majority of the weight at 80%, emphasizing the importance of your final project, portfolio and industry readiness.</p>
       </div>
       
-      <!-- Legend - Swapped Break and Enrichment Week -->
+      <!-- Legend - Swapped Break and Enrichment Week positions -->
       <div class="legend">
         <div class="legend-item">
           <div class="legend-color project-color"></div>
@@ -686,43 +692,43 @@
         year1: {
           title: "Year 1: Non-weighted",
           description: "Allowing for experimentation and exploration without high stakes.",
-          weeks: 33, // Total teaching weeks plus breaks
+          weeks: 41, // Updated to 41 total weeks to accommodate full academic year
           items: [
             { id: 'induction', name: 'Induction', start: 0, duration: 1, type: 'project' },
             { id: 'project1', name: 'Project One (FN4004)', start: 1, duration: 5, type: 'project' },
-             { id: 'formative1', name: 'Formative Feedback (FN4004)', start: 5, duration: 0, type: 'formative', 
+            { id: 'formative1', name: 'Formative Feedback (FN4004)', start: 5, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Mid-project feedback to guide your development process. This is an opportunity to receive constructive critique on your work in progress.<br><br><span class='expectations-text'>Expectations:</span> Bring your sketchbook, initial designs, and research materials. Be prepared to discuss your concept development and receive peer feedback.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-             { id: 'summative1', name: 'Summative Assessment Submission (FN4004)', start: 6, duration: 0, type: 'summative', 
+            { id: 'summative1', name: 'Summative Assessment Submission (FN4004)', start: 6, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Final assessment of your first project work including research, development, and outcomes.<br><br><span class='expectations-text'>Expectations:</span> Submit all required deliverables as specified in the brief. Ensure your work demonstrates research, development, and final outcomes that meet the learning objectives.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
             { id: 'enrichment1', name: 'Enrichment Week', start: 6, duration: 1, type: 'project' },
             { id: 'project2', name: 'Project Two (FN4004)', start: 7, duration: 5, type: 'project' },
-            { id: 'formative1', name: 'Formative Feedback (FN4004)', start: 12, duration: 0, type: 'formative', 
+            { id: 'formative2', name: 'Formative Feedback (FN4004)', start: 12, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Mid-project feedback to guide your development process. This is an opportunity to receive constructive critique on your work in progress.<br><br><span class='expectations-text'>Expectations:</span> Bring your sketchbook, initial designs, and research materials. Be prepared to discuss your concept development and receive peer feedback.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-           { id: 'winterBreak', name: 'Winter Break', start: 13, duration: 3, type: 'project' },
+            { id: 'winterBreak', name: 'Winter Break', start: 13, duration: 3, type: 'project' },
             { id: 'project3', name: 'Project Three (FN4004)', start: 16, duration: 2, type: 'project' },
-             { id: 'formative2', name: 'Formative Feedback (FN4004)', start: 18, duration: 0, type: 'formative', 
+            { id: 'formative3', name: 'Formative Feedback (FN4004)', start: 20, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Development feedback for your project to help refine your direction.<br><br><span class='expectations-text'>Expectations:</span> Bring your design development work and be prepared to discuss your progress and challenges.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'enrichment2', name: 'Enrichment Week', start: 18, duration: 1, type: 'project' },
-            { id: 'project4', name: 'Project Four (FN4004)', start: 19, duration: 5, type: 'project' },
-           { id: 'formative3', name: 'Formative Feedback (FN4004)', start: 23, duration: 0, type: 'formative', 
+            { id: 'enrichment2', name: 'Enrichment Week', start: 21, duration: 1, type: 'project' }, // Updated to week 21 (TW18)
+            { id: 'project4', name: 'Project Four (FN4004)', start: 22, duration: 5, type: 'project' }, // Updated start to after EW2
+            { id: 'formative4', name: 'Formative Feedback (FN4004)', start: 26, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Technical feedback on your toile development and construction techniques.<br><br><span class='expectations-text'>Expectations:</span> Present your toile and technical samples. Be prepared to discuss construction decisions and technical challenges.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'summative2', name: 'Summative Assessment Submission(FN4004)', start: 24, duration: 0, type: 'summative', 
+            { id: 'summative2', name: 'Summative Assessment Submission(FN4004)', start: 27, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Final assessment of your technical development work.<br><br><span class='expectations-text'>Expectations:</span> Submit all required technical samples, toiles, and documentation as specified in the brief.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'springBreak', name: 'Spring Break', start: 25, duration: 3, type: 'project' },
-            { id: 'portfolio', name: 'Portfolio Development (FN4005)', start: 28, duration: 3, type: 'project' },
+            { id: 'springBreak', name: 'Spring Break', start: 28, duration: 3, type: 'project' }, // Updated position
+            { id: 'portfolio', name: 'Portfolio Development (FN4005)', start: 31, duration: 9, type: 'project' }, // Updated position
             { id: 'historical', name: 'Historical Themes Research (HA4104)', start: 1, duration: 12, type: 'project' },
             { id: 'essayPlanning', name: 'Essay Planning (HA4104)', start: 16, duration: 6, type: 'project' },
             { id: 'essayWriting', name: 'Essay Writing Period (HA4104)', start: 22, duration: 6, type: 'project' },
-            { id: 'finalSubmission', name: 'Final Submissions', start: 31, duration: 0, type: 'summative', 
+            { id: 'finalSubmission', name: 'Final Submissions', start: 40, duration: 0, type: 'summative', // Updated position
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Final portfolio assessment including all year's work.<br><br><span class='expectations-text'>Expectations:</span> Submit a comprehensive portfolio demonstrating your technical, creative, and academic development throughout the year.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'chsSubmission', name: 'CHS Submission (HA4104)', start: 28, duration: 0, type: 'summative', 
+            { id: 'chsSubmission', name: 'CHS Submission (HA4104)', start: 31, duration: 0, type: 'summative', // Updated position
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Final submission of your written Cultural & Historical Studies essay.<br><br><span class='expectations-text'>Expectations:</span> Submit a properly formatted academic essay addressing the assigned topic. Ensure proper citations, bibliography, and adherence to word count.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
           ],
@@ -730,102 +736,108 @@
             { name: 'Enrichment Week (TB1)', start: 6, duration: 1 },
             { name: 'Winter Break', start: 13, duration: 3 },
             { name: 'Enrichment Week (TB2)', start: 18, duration: 1 },
-            { name: 'Spring Break', start: 25, duration: 3 }
+            { name: 'Spring Break', start: 28, duration: 3 } // Updated position
           ]
         },
         year2: {
           title: "Year 2: 20% weighted",
           description: "Contributes 20% to your final mark, reflecting the adoption of Professional Practice.",
-          weeks: 33, // Total teaching weeks plus breaks
+          weeks: 41, // Updated to 41 weeks to match Year 1
           items: [
             { id: 'induction2', name: 'Induction', start: 0, duration: 1, type: 'project' },
-            { id: 'project1_y2', name: 'Design Proces - Project One', start: 1, duration: 5, type: 'project' },
+            { id: 'project1_y2', name: 'Design Process - Project One', start: 1, duration: 5, type: 'project' },
             { id: 'formative1_y2', name: 'Formative Feedback (FN5001)', start: 5, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Mid-project feedback focusing on your design development and concept research.<br><br><span class='expectations-text'>Expectations:</span> Present your research, concept development, and initial designs. Be prepared to explain your design rationale and research methodology.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
             { id: 'enrichment1_y2', name: 'Enrichment Week', start: 6, duration: 1, type: 'project' },
-            { id: 'project2_y2', name: 'Design Proces - Project Two', start: 7, duration: 5, type: 'project' },
-            { id: 'formative2_y2', name: 'Formative Feedback (FN5001)', start: 11, duration: 0, type: 'formative', 
+            { id: 'project2_y2', name: 'Design Process - Project Two', start: 7, duration: 5, type: 'project' },
+            { id: 'formative2_y2', name: 'Formative Feedback (FN5001)', start: 12, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Mid-project feedback focusing on your design development and concept research.<br><br><span class='expectations-text'>Expectations:</span> Present your research, concept development, and initial designs. Be prepared to explain your design rationale and research methodology.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
             { id: 'summative1_y2', name: 'Summative Assessment Submission (FN5001)', start: 12, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Assessment of your project outcomes, contributing to your 20% Year 2 weighting. Marking typically takes 20 working days.<br><br><span class='expectations-text'>Expectations:</span> Submit all project components as specified in the brief. Ensure your work demonstrates progress in both technical and conceptual development.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
             { id: 'winterBreak_y2', name: 'Winter Break', start: 13, duration: 3, type: 'project' },
-            { id: 'designTutorials', name: 'Professional Practice - Project One', start: 16, duration: 2, type: 'project' },
-            { id: 'formativeReview', name: 'Formative Feedback (FN5002)', start: 18, duration: 0, type: 'formative', 
+            { id: 'designTutorials', name: 'Professional Practice - Project One', start: 16, duration: 4, type: 'project' },
+            { id: 'formativeReview', name: 'Formative Feedback (FN5002)', start: 20, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Comprehensive review of your work to date with industry feedback.<br><br><span class='expectations-text'>Expectations:</span> Present your portfolio of work to date and be prepared to discuss your design direction with industry professionals. Consider how to implement their feedback in your ongoing work.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'enrichment2_y2', name: 'Enrichment Week', start: 18, duration: 1, type: 'project' },
-            { id: 'majorProject1', name: 'Professional Practice - Project Two', start: 19, duration: 5, type: 'project' },
-           { id: 'midPoint', name: 'Formative Feedback (FN5002)', start: 23, duration: 0, type: 'formative', 
+            { id: 'enrichment2_y2', name: 'Enrichment Week', start: 21, duration: 1, type: 'project' },
+            { id: 'majorProject1', name: 'Professional Practice - Project Two', start: 22, duration: 5, type: 'project' },
+            { id: 'midPoint', name: 'Formative Feedback (FN5002)', start: 26, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Technical and creative feedback on your product development work.<br><br><span class='expectations-text'>Expectations:</span> Present your technical samples, prototypes, and development work. Be ready to discuss manufacturing considerations and material choices.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'finalSubmission_y2', name: 'Summative Submission (FN5002)', start: 24, duration: 0, type: 'summative', 
+            { id: 'finalSubmission_y2', name: 'Summative Submission (FN5002)', start: 27, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Final assessment of your Year 2 projects and portfolio.<br><br><span class='expectations-text'>Expectations:</span> Submit a comprehensive portfolio demonstrating your technical, creative, and professional development throughout the year. Include all project outcomes as specified in the brief.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'springBreak_y2', name: 'Spring Break', start: 25, duration: 3, type: 'project' },
-            { id: 'portfolioDev_y2', name: 'Portfolio Development (FN5004)', start: 28, duration: 3, type: 'project' },
+            { id: 'springBreak_y2', name: 'Spring Break', start: 28, duration: 3, type: 'project' },
+            { id: 'portfolioDev_y2', name: 'Portfolio Development (FN5004)', start: 31, duration: 9, type: 'project' },
             { id: 'historical_y2', name: 'Historical Themes Research (HA5107)', start: 1, duration: 12, type: 'project' },
             { id: 'essayPlanning_y2', name: 'Essay Planning (HA5107)', start: 16, duration: 6, type: 'project' },
             { id: 'essayWriting_y2', name: 'Essay Writing Period (HA5107)', start: 22, duration: 6, type: 'project' },
-            { id: 'chsSubmission_y2', name: 'CHS Submission (HA5107)', start: 28, duration: 0, type: 'summative', 
+            { id: 'chsSubmission_y2', name: 'CHS Submission (HA5107)', start: 31, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Final submission of your Year 2 Cultural & Historical Studies essay.<br><br><span class='expectations-text'>Expectations:</span> Submit a well-researched academic essay with proper citations and bibliography. Your writing should demonstrate increased analytical sophistication from Year 1.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
+            { id: 'finalSubmission_y2_end', name: 'Final Submissions', start: 40, duration: 0, type: 'summative', 
+              link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
+              details: "Final portfolio assessment for Year 2.<br><br><span class='expectations-text'>Expectations:</span> Submit a comprehensive portfolio demonstrating your technical, creative, and professional development throughout the year.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
           ],
           breaks: [
             { name: 'Enrichment Week (TB1)', start: 6, duration: 1 },
             { name: 'Winter Break', start: 13, duration: 3 },
-            { name: 'Enrichment Week (TB2)', start: 18, duration: 1 },
-            { name: 'Spring Break', start: 25, duration: 3 }
+            { name: 'Enrichment Week (TB2)', start: 21, duration: 1 },
+            { name: 'Spring Break', start: 28, duration: 3 }
           ]
         },
         year3: {
           title: "Year 3: 80% weighted",
           description: "Carries the majority of the weight at 80%, emphasising the importance of your final year work.",
-          weeks: 33, // Total teaching weeks plus breaks
+          weeks: 41, // Updated to 41 weeks to match Year 1
           items: [
             { id: 'induction3', name: 'Induction', start: 0, duration: 1, type: 'project' },
             { id: 'project1_y3', name: 'Pre-Collection (FN6001)', start: 1, duration: 5, type: 'project' },
-             { id: 'formative1_y3', name: 'Formative Feedback (FN6001)', start: 5, duration: 0, type: 'formative', 
+            { id: 'formative1_y3', name: 'Formative Feedback (FN6001)', start: 5, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Critical feedback on your final year project direction and concept development.<br><br><span class='expectations-text'>Expectations:</span> Present a thorough exploration of your research, concept development, and design direction. Be prepared to articulate your unique design vision and how it fits into the contemporary fashion landscape.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
             { id: 'enrichment1_y3', name: 'Enrichment Week', start: 6, duration: 1, type: 'project' },
             { id: 'project2_y3', name: 'Pre-Collection (FN6001)', start: 7, duration: 5, type: 'project' },
-             { id: 'formative1_y3', name: 'Formative Feedback (FN6001)', start: 11, duration: 0, type: 'formative', 
+            { id: 'formative2_y3', name: 'Formative Feedback (FN6001)', start: 12, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Critical feedback on your final year project direction and concept development.<br><br><span class='expectations-text'>Expectations:</span> Present a thorough exploration of your research, concept development, and design direction. Be prepared to articulate your unique design vision and how it fits into the contemporary fashion landscape.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
             { id: 'summative1_y3', name: 'Summative Assessment Submission (FN6001)', start: 12, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Assessment of your first final-year project, contributing to your 80% weighting.<br><br><span class='expectations-text'>Expectations:</span> Submit a professional-quality project that demonstrates your readiness for industry. Your work should reflect a personal design philosophy and innovative approach.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
             { id: 'winterBreak_y3', name: 'Winter Break', start: 13, duration: 3, type: 'project' },
-            { id: 'designTutorials_y3', name: 'Final Collection (FN6004)', start: 16, duration: 2, type: 'project' },
-             { id: 'formativeReview_y3', name: 'Formative Feedback (FN6004)', start: 17, duration: 0, type: 'formative', 
+            { id: 'designTutorials_y3', name: 'Final Collection (FN6004)', start: 16, duration: 4, type: 'project' },
+            { id: 'formativeReview_y3', name: 'Formative Feedback (FN6004)', start: 20, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Industry-facing review of your collection development and professional portfolio.<br><br><span class='expectations-text'>Expectations:</span> Present your collection concept, development, and professional portfolio to industry representatives. Be prepared to discuss your work in a professional context and respond to industry-level feedback.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'enrichment2_y3', name: 'Enrichment Week', start: 18, duration: 1, type: 'project' },
-            { id: 'majorProject1_y3', name: 'Final Collection (FN6004)', start: 19, duration: 5, type: 'project' },
-           { id: 'productDev_y3', name: 'Product Development (FN6004)', start: 19, duration: 5, type: 'project' },
-            { id: 'midPoint_y3', name: 'Mid-Point Formative (FN6004)', start: 22, duration: 0, type: 'formative', 
+            { id: 'enrichment2_y3', name: 'Enrichment Week', start: 21, duration: 1, type: 'project' },
+            { id: 'majorProject1_y3', name: 'Final Collection (FN6004)', start: 22, duration: 5, type: 'project' },
+            { id: 'productDev_y3', name: 'Product Development (FN6004)', start: 22, duration: 5, type: 'project' },
+            { id: 'midPoint_y3', name: 'Mid-Point Formative (FN6004)', start: 26, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Final development feedback before your summative assessment.<br><br><span class='expectations-text'>Expectations:</span> Present your nearly-completed collection, including garments, technical files, and professional portfolio. Use this opportunity to make final refinements before submission.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'springBreak_y3', name: 'Spring Break', start: 25, duration: 3, type: 'project' },
-            { id: 'portfolioDev_y3', name: 'Final Collection & Portfolio', start: 28, duration: 3, type: 'project' },
+            { id: 'finalYearSubmission', name: 'Summative Assessment (FN6004)', start: 27, duration: 0, type: 'summative', 
+              link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
+              details: "Final assessment of your Year 3 collection.<br><br><span class='expectations-text'>Expectations:</span> Submit your completed collection and technical files that demonstrate professional standards and readiness for industry.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
+            { id: 'springBreak_y3', name: 'Spring Break', start: 28, duration: 3, type: 'project' },
+            { id: 'portfolioDev_y3', name: 'Final Collection & Portfolio', start: 31, duration: 9, type: 'project' },
             { id: 'historical_y3', name: 'Dissertation Research (HA6101)', start: 1, duration: 12, type: 'project' },
             { id: 'essayPlanning_y3', name: 'Dissertation Planning (HA6101)', start: 16, duration: 6, type: 'project' },
             { id: 'essayWriting_y3', name: 'Dissertation Writing (HA6101)', start: 22, duration: 6, type: 'project' },
-            { id: 'finalShow', name: 'Degree Show', start: 31, duration: 0, type: 'summative', 
+            { id: 'finalShow', name: 'Degree Show', start: 40, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Final exhibition of your work and degree classification.<br><br><span class='expectations-text'>Expectations:</span> Present your complete collection and portfolio at professional industry standards. Your presentation should demonstrate your readiness to enter the fashion industry.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'chsSubmission_y3', name: 'Dissertation Submission (HA6101)', start: 28, duration: 0, type: 'summative', 
+            { id: 'chsSubmission_y3', name: 'Dissertation Submission (HA6101)', start: 31, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Final submission of your Year 3 Cultural & Historical Studies dissertation.<br><br><span class='expectations-text'>Expectations:</span> Submit a dissertation that demonstrates advanced research skills, critical analysis, and academic writing at degree level. Your work should make an original contribution to the field.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
           ],
           breaks: [
             { name: 'Enrichment Week (TB1)', start: 6, duration: 1 },
             { name: 'Winter Break', start: 13, duration: 3 },
-            { name: 'Enrichment Week (TB2)', start: 18, duration: 1 },
-            { name: 'Spring Break', start: 25, duration: 3 }
+            { name: 'Enrichment Week (TB2)', start: 21, duration: 1 },
+            { name: 'Spring Break', start: 28, duration: 3 }
           ]
         }
       };
@@ -903,49 +915,124 @@
         };
       }
       
-      // Render week markers
+      // Render week markers with teaching week numbers
       function renderWeekMarkers() {
         weekMarkers.innerHTML = '';
         const totalWeeks = timelineData[activeYear].weeks;
         
-        for (let i = 0; i <= totalWeeks; i += 5) {
+        // Create an array to map absolute weeks to teaching weeks
+        const teachingWeeks = [];
+        
+        // Induction is Week 0 (TW0) - removed text as requested
+        teachingWeeks[0] = ""; // Removed "TW0" text
+        
+        // TB1: Weeks 1-12 are TW1-TW12
+        for (let i = 1; i <= 12; i++) {
+          teachingWeeks[i] = `TW${i}`;
+        }
+        
+        // Winter Break: Weeks 13-15 have no teaching week numbers - don't show Break text
+        teachingWeeks[13] = "";
+        teachingWeeks[14] = "";
+        teachingWeeks[15] = "";
+        
+        // TB2: Weeks 16-27 are TW13-TW24
+        for (let i = 16, tw = 13; i <= 27; i++, tw++) {
+          teachingWeeks[i] = `TW${tw}`;
+        }
+        
+        // Spring Break: Weeks 28-30 have no teaching week numbers - don't show Break text
+        teachingWeeks[28] = "";
+        teachingWeeks[29] = "";
+        teachingWeeks[30] = "";
+        
+        // TB3: Weeks 31-40 are TW25-TW34
+        for (let i = 31, tw = 25; i <= 40; i++, tw++) {
+          teachingWeeks[i] = `TW${tw}`;
+        }
+        
+        // Display week markers at key points and teaching blocks
+        // Include TW18 (week 21) marker
+        const markerWeeks = [0, 1, 6, 12, 13, 16, 21, 27, 28, 31, 40];
+        
+        for (let i of markerWeeks) {
           const position = (i / totalWeeks) * 100;
           const marker = document.createElement('div');
           marker.className = 'week-marker';
           marker.style.left = `${position}%`;
           
-          const line = document.createElement('div');
-          line.className = 'week-marker-line';
-          
-          const label = document.createElement('div');
-          label.className = 'week-marker-label';
-          // Skip labeling Week 0 (TW0)
-          if (i > 0) {
-            label.textContent = `Week ${i}`;
+          // Special handling for TW12 and TW24 - no lines, just text that's right-aligned to the break
+          if (i === 12 || i === 27) {
+            const label = document.createElement('div');
+            label.className = 'week-marker-label';
+            label.textContent = teachingWeeks[i];
+            label.style.position = 'absolute';
+            label.style.right = '2px'; // Right-align to just before the break
+            label.style.textAlign = 'right';
+            
+            marker.appendChild(label);
           } else {
-            label.textContent = '';
+            const line = document.createElement('div');
+            line.className = 'week-marker-line';
+            
+            const label = document.createElement('div');
+            label.className = 'week-marker-label';
+            label.textContent = teachingWeeks[i];
+            
+            marker.appendChild(line);
+            marker.appendChild(label);
           }
           
-          marker.appendChild(line);
-          marker.appendChild(label);
           weekMarkers.appendChild(marker);
         }
       }
       
-      // Render vertical columns for breaks and enrichment weeks
+      // Render vertical columns for breaks and enrichment weeks with distinction
       function renderVerticalColumns() {
         verticalColumns.innerHTML = '';
         const totalWeeks = timelineData[activeYear].weeks;
-        const breaks = timelineData[activeYear].breaks;
+        const breaks = [
+          { name: 'Enrichment Week (TB1)', start: 6, duration: 1 },
+          { name: 'Winter Break', start: 13, duration: 3 },
+          { name: 'Enrichment Week (TB2)', start: 21, duration: 1 }, // Updated to week 21 which corresponds to TW18
+          { name: 'Spring Break', start: 28, duration: 3 }
+        ];
         
-        breaks.forEach(breakItem => {
+        // Separate actual breaks from enrichment weeks for visual distinction
+        const mainBreaks = breaks.filter(b => b.name.includes('Winter') || b.name.includes('Spring'));
+        const enrichmentWeeks = breaks.filter(b => b.name.includes('Enrichment'));
+        
+        // Add vertical columns for main breaks (Winter and Spring)
+        mainBreaks.forEach(breakItem => {
           const position = calculatePosition(breakItem.start, breakItem.duration, totalWeeks);
           const column = document.createElement('div');
-          column.className = 'vertical-column';
+          column.className = 'vertical-column break-column';
           column.style.left = position.left;
           column.style.width = position.width;
           column.title = breakItem.name;
           
+          verticalColumns.appendChild(column);
+        });
+        
+        // Add vertical columns for enrichment weeks with different styling
+        enrichmentWeeks.forEach(enrichmentWeek => {
+          const position = calculatePosition(enrichmentWeek.start, enrichmentWeek.duration, totalWeeks);
+          const column = document.createElement('div');
+          column.className = 'vertical-column enrichment-column';
+          column.style.left = position.left;
+          column.style.width = position.width;
+          
+          // Create a better title that includes the teaching week number
+          let twLabel = "";
+          if (enrichmentWeek.start === 6) {
+            twLabel = "Enrichment Week (TB1/TW6)";
+          } else if (enrichmentWeek.start === 21) {
+            twLabel = "Enrichment Week (TB2/TW18)";
+          } else {
+            twLabel = enrichmentWeek.name;
+          }
+          
+          column.title = twLabel;
           verticalColumns.appendChild(column);
         });
       }
@@ -1015,7 +1102,7 @@
         modalOverlay.style.display = 'flex';
       }
       
-      // Function to adjust teaching block positions
+      // Function to adjust teaching block positions according to academic calendar
       function renderTeachingBlocks() {
         const teachingBlocks = document.querySelector('.teaching-blocks');
         const totalWeeks = timelineData[activeYear].weeks;
@@ -1023,56 +1110,50 @@
         // Clear existing content
         teachingBlocks.innerHTML = '';
         
-        // Get break positions to align with the vertical columns
-        const breaks = timelineData[activeYear].breaks;
+        // Use exact week calculations to ensure accurate widths
         
-        // Create teaching blocks with appropriate spacing
+        // Induction: Week 0 - remove text to avoid crowding
+        const induction = document.createElement('div');
+        induction.className = 'block-label';
+        induction.textContent = ''; // Remove text as it's too crowded
+        induction.style.width = `${(1 / totalWeeks) * 100}%`;
+        teachingBlocks.appendChild(induction);
+        
+        // TB1: Weeks 1-12 (includes EW1 at week 6) - TW1-TW12
         const block1 = document.createElement('div');
         block1.className = 'block-label';
-        block1.textContent = 'Teaching Block 1';
-        // Set width based on weeks 0 to winter break
-        const tb1Width = (breaks.find(b => b.name.includes('Winter')).start / totalWeeks) * 100;
-        block1.style.width = `${tb1Width}%`;
+        block1.textContent = 'Teaching Block 1 (TW1-12)';
+        block1.style.width = `${(12 / totalWeeks) * 100}%`;
+        teachingBlocks.appendChild(block1);
         
-        // Winter break spacer
-        const winterBreak = breaks.find(b => b.name.includes('Winter'));
+        // Winter Break: Weeks 13-15 (3 weeks)
         const winterBreakSpacer = document.createElement('div');
-        const winterBreakWidth = (winterBreak.duration / totalWeeks) * 100;
-        winterBreakSpacer.style.width = `${winterBreakWidth}%`;
         winterBreakSpacer.className = 'break-spacer';
         winterBreakSpacer.title = 'Winter Break';
+        winterBreakSpacer.style.width = `${(3 / totalWeeks) * 100}%`;
+        teachingBlocks.appendChild(winterBreakSpacer);
         
-        // Teaching Block 2
+        // TB2: Weeks 16-27 (includes EW2 at week 18) - TW13-TW24 (12 weeks)
         const block2 = document.createElement('div');
         block2.className = 'block-label';
-        block2.textContent = 'Teaching Block 2';
-        // From end of winter break to spring break
-        const tb2Start = winterBreak.start + winterBreak.duration;
-        const springBreak = breaks.find(b => b.name.includes('Spring'));
-        const tb2Width = ((springBreak.start - tb2Start) / totalWeeks) * 100;
+        block2.textContent = 'Teaching Block 2 (TW13-24)';
+        // Ensure TB2 is exactly 12 weeks wide, same as TB1
+        const tb2Width = (12 / totalWeeks) * 100;
         block2.style.width = `${tb2Width}%`;
+        teachingBlocks.appendChild(block2);
         
-        // Spring break spacer
+        // Spring Break: Weeks 28-30 (3 weeks)
         const springBreakSpacer = document.createElement('div');
-        const springBreakWidth = (springBreak.duration / totalWeeks) * 100;
-        springBreakSpacer.style.width = `${springBreakWidth}%`;
         springBreakSpacer.className = 'break-spacer';
         springBreakSpacer.title = 'Spring Break';
+        springBreakSpacer.style.width = `${(3 / totalWeeks) * 100}%`;
+        teachingBlocks.appendChild(springBreakSpacer);
         
-        // Teaching Block 3
+        // TB3: Weeks 31-40 (10 weeks, no enrichment week) - TW25-TW34
         const block3 = document.createElement('div');
         block3.className = 'block-label';
-        block3.textContent = 'Teaching Block 3';
-        // From end of spring break to end of timeline
-        const tb3Start = springBreak.start + springBreak.duration;
-        const tb3Width = ((totalWeeks - tb3Start) / totalWeeks) * 100;
-        block3.style.width = `${tb3Width}%`;
-        
-        // Append blocks and spacers in the correct order
-        teachingBlocks.appendChild(block1);
-        teachingBlocks.appendChild(winterBreakSpacer);
-        teachingBlocks.appendChild(block2);
-        teachingBlocks.appendChild(springBreakSpacer);
+        block3.textContent = 'Teaching Block 3 (TW25-34)';
+        block3.style.width = `${(10 / totalWeeks) * 100}%`;
         teachingBlocks.appendChild(block3);
       }
       
