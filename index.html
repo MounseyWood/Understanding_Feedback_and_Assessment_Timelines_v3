@@ -420,6 +420,13 @@
       left: 0; /* Align to left of the icon */
     }
     
+    /* Special class for final summative submissions */
+    .milestone-label.final-submission {
+      text-align: right;
+      right: 1.5rem; /* Align right side of text with left side of icon */
+      left: auto;
+    }
+    
     /* Project label - appears below project lines */
     .project-label {
       position: absolute;
@@ -961,13 +968,34 @@
           marker.className = 'week-marker';
           marker.style.left = `${position}%`;
           
-          // Special handling for TW12 and TW24 - no lines, just text that's right-aligned to the break
-          if (i === 12 || i === 27) {
+          // Special handling for TW12, TW24 and TW34 - align to the end of their teaching blocks
+          if (i === 12) {
+            // TW12 should right-align exactly with Winter Break start line
             const label = document.createElement('div');
             label.className = 'week-marker-label';
             label.textContent = teachingWeeks[i];
             label.style.position = 'absolute';
-            label.style.right = '2px'; // Right-align to just before the break
+            label.style.right = '0'; // Align exactly with the break line
+            label.style.textAlign = 'right';
+            
+            marker.appendChild(label);
+          } else if (i === 27) {
+            // TW24 should right-align exactly with Spring Break start line
+            const label = document.createElement('div');
+            label.className = 'week-marker-label';
+            label.textContent = teachingWeeks[i];
+            label.style.position = 'absolute';
+            label.style.right = '0'; // Align exactly with the break line
+            label.style.textAlign = 'right';
+            
+            marker.appendChild(label);
+          } else if (i === 40) {
+            // TW34 should right-align with the end of TB3
+            const label = document.createElement('div');
+            label.className = 'week-marker-label';
+            label.textContent = "TW34";
+            label.style.position = 'absolute';
+            label.style.right = '0'; // Align exactly with the end line
             label.style.textAlign = 'right';
             
             marker.appendChild(label);
@@ -1065,11 +1093,28 @@
                 showModal(item);
               });
               
-              // Add label precisely aligned with the left of the milestone
+              // Add label precisely aligned with the milestone
               const label = document.createElement('div');
-              label.className = 'milestone-label';
+              
+              // Check if this is a final submission
+              const isFinalSubmission = 
+                (item.id === 'finalSubmission' || 
+                 item.id === 'finalSubmission_y2_end' || 
+                 item.id === 'finalShow' ||
+                 item.id === 'finalYearSubmission');
+              
+              if (isFinalSubmission) {
+                // For final submissions, right-align text to the left of the icon
+                label.className = 'milestone-label final-submission';
+                label.style.left = 'auto'; // Reset left position
+                label.style.right = position.leftNumeric + 2 + '%'; // Position to the left of the icon with some offset
+              } else {
+                // Standard left alignment for other milestones
+                label.className = 'milestone-label';
+                label.style.left = position.left; // Align to the left edge of the icon
+              }
+              
               label.textContent = item.name;
-              label.style.left = position.left; // Align to the left edge of the icon
               
               row.appendChild(itemElement);
               row.appendChild(label);
