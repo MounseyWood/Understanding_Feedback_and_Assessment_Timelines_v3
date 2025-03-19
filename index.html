@@ -423,8 +423,9 @@
     /* Special class for final summative submissions */
     .milestone-label.final-submission {
       text-align: right;
-      right: 1.5rem; /* Align right side of text with left side of icon */
+      right: 20px; /* Increased so text is visible on screen */
       left: auto;
+      width: 180px; /* Set a fixed width to ensure text doesn't overflow */
     }
     
     /* Project label - appears below project lines */
@@ -975,7 +976,7 @@
             label.className = 'week-marker-label';
             label.textContent = teachingWeeks[i];
             label.style.position = 'absolute';
-            label.style.right = '0'; // Align exactly with the break line
+            label.style.right = '-6px'; // Adjust to align with the divider based on screenshot
             label.style.textAlign = 'right';
             
             marker.appendChild(label);
@@ -985,7 +986,7 @@
             label.className = 'week-marker-label';
             label.textContent = teachingWeeks[i];
             label.style.position = 'absolute';
-            label.style.right = '0'; // Align exactly with the break line
+            label.style.right = '-6px'; // Adjust to align with the divider based on screenshot
             label.style.textAlign = 'right';
             
             marker.appendChild(label);
@@ -995,7 +996,7 @@
             label.className = 'week-marker-label';
             label.textContent = "TW34";
             label.style.position = 'absolute';
-            label.style.right = '0'; // Align exactly with the end line
+            label.style.right = '-6px'; // Adjust to align with the end divider based on screenshot
             label.style.textAlign = 'right';
             
             marker.appendChild(label);
@@ -1104,10 +1105,11 @@
                  item.id === 'finalYearSubmission');
               
               if (isFinalSubmission) {
-                // For final submissions, right-align text to the left of the icon
+                // For final submissions, position text properly
                 label.className = 'milestone-label final-submission';
                 label.style.left = 'auto'; // Reset left position
-                label.style.right = position.leftNumeric + 2 + '%'; // Position to the left of the icon with some offset
+                // Position properly so text is visible on screen
+                label.style.right = '20px'; // Fixed position from the right
               } else {
                 // Standard left alignment for other milestones
                 label.className = 'milestone-label';
